@@ -1,0 +1,18 @@
+[
+  {
+    "id": "1",
+    "firstName": null,
+    "lastName": null,
+    "title": "Admissions",
+    "email": "admissions@blueridgectc.edu",
+    "phoneNumber": "3049076055"
+  },
+  {
+    "id": "2",
+    "firstName": null,
+    "lastName": null,
+    "title": "Cashier",
+    "email": "ar@blueridgectc.edu",
+    "phoneNumber": "3045748284"
+  }
+]
