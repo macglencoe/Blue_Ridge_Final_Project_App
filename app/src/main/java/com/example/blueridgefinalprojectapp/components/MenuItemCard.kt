@@ -57,7 +57,6 @@ fun MenuItemCard(
     // Email me if you have any questions lmcdon06@my.blueridgectc.edu
 
     // Write your code here ...
-
 }
 
 

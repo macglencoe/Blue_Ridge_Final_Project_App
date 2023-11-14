@@ -1,5 +1,6 @@
 package com.example.blueridgefinalprojectapp
 
+import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,16 +10,20 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.blueridgefinalprojectapp.components.MenuItemCard
 import com.example.blueridgefinalprojectapp.components.Toolbar
 import com.example.blueridgefinalprojectapp.data.getDemoBruinMenuItemList
 import com.example.blueridgefinalprojectapp.model.ToolbarButtonOption
+import com.example.blueridgefinalprojectapp.ui.theme.BlueRidgeFinalProjectAppTheme
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -50,7 +55,7 @@ fun bruinMenu(
             },
             option2 = ToolbarButtonOption.NONE,
             option2OnClick = { /* Do Nothing */ })
-        Column( // Content
+        Column(
             verticalArrangement = Arrangement.spacedBy(10.dp, Alignment.Top),
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
@@ -58,6 +63,7 @@ fun bruinMenu(
                 .padding(all = 10.dp)
                 .verticalScroll(rememberScrollState())
         ) {
+            // Content
             menuItemList.forEach { menuItem ->
                 MenuItemCard(
                     menuItem = menuItem
@@ -66,4 +72,28 @@ fun bruinMenu(
         }
     }
 
+}
+
+// -- PREVIEW -- //
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Preview(
+    widthDp = 360, heightDp = 800,
+    uiMode = Configuration.UI_MODE_NIGHT_NO
+)
+@Preview(
+    widthDp = 360, heightDp = 800,
+    uiMode = Configuration.UI_MODE_NIGHT_YES
+)
+@Composable
+private fun BruinMenuPreview() {
+    BlueRidgeFinalProjectAppTheme {
+        // A surface container using the 'background' color from the theme
+        Surface(
+            modifier = Modifier.fillMaxSize(),
+            color = MaterialTheme.colorScheme.background
+        ) {
+            bruinMenu()
+        }
+    }
 }
