@@ -3,6 +3,7 @@ package com.example.blueridgefinalprojectapp.components
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -22,7 +23,9 @@ fun ToolbarButton(
             Icon(
                 painter = painterResource(id = option.iconResource),
                 contentDescription = option.contentDescription,
-                modifier = Modifier.size(48.dp)
+                tint = MaterialTheme.colorScheme.onSurface,
+                modifier = Modifier
+                    .size(48.dp)
             )
         }
     }
