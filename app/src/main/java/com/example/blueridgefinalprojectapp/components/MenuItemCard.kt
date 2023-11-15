@@ -9,7 +9,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.blueridgefinalprojectapp.model.MenuItem
-import com.example.blueridgefinalprojectapp.ui.theme.BlueRidgeFinalProjectAppTheme
+import com.example.compose.AppTheme
 import java.time.LocalDate
 import java.time.ZoneId
 import java.util.Date
@@ -83,7 +83,7 @@ fun MenuItemCardPreview() {
                 .toInstant()
         )
     )
-    BlueRidgeFinalProjectAppTheme {
+    AppTheme {
         Surface(
             color = MaterialTheme.colorScheme.background
         ) {

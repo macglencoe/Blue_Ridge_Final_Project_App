@@ -33,15 +33,20 @@ fun getDemoBruinMenuItemList(context: Context): MutableList<MenuItem>{
     return Gson().fromJson(jsonFileString, type)
 }
 
-fun getDemoContactList(context: Context): MutableList<Contact> {
+fun loadDemoContactList(context: Context)/*: MutableList<Contact>*/ {
     val type = object : TypeToken<List<Contact>>() {}.type
-    return getListFromJsonFile(context, "demo_contacts.json", type)
-
+    //return loadListFromJsonFile(context, "demo_contacts.json", type)
+    CurrentData.contactList = loadListFromJsonFile(context, "demo_contacts.json", type)
 }
 
-fun <T> getListFromJsonFile(context: Context, fileName: String, typeToken: Type): MutableList<T> {
+
+fun <T> loadListFromJsonFile(context: Context, fileName: String, typeToken: Type): MutableList<T> {
     val jsonFileString = getJsonDataFromAsset(
         context = context, fileName = fileName
     )
     return Gson().fromJson(jsonFileString, typeToken)
+}
+
+object CurrentData {
+    var contactList: MutableList<Contact>? = null
 }
