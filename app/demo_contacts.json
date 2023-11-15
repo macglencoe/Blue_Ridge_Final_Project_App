@@ -12,64 +12,55 @@
     "id": "2",
     "title": "Cashier",
     "email": "ar@blueridgectc.edu",
-    "phoneNumber": "3045748284",
-    "constant": true
+    "phoneNumber": "3045748284"
   },
   {
     "id": "3",
     "title": "Accessibility Services",
     "email": "access@blueridgectc.edu",
-    "phoneNumber": "3047452335",
-    "constant": true
+    "phoneNumber": "3047452335"
   },
   {
     "id": "4",
     "title": "Financial Aid",
     "email": "finaid@blueridgectc.edu",
-    "phoneNumber": "3044704558",
-    "constant": true
+    "phoneNumber": "3044704558"
   },
   {
     "id": "5",
     "title": "Registrar",
     "email": "registrar@blueridgectc.edu",
-    "phoneNumber": "3049076052",
-    "constant": true
+    "phoneNumber": "3049076052"
   },
   {
     "id": "6",
     "title": "Student Services",
-    "phoneNumber": "3044519174",
-    "constant": true
+    "phoneNumber": "3044519174"
   },
   {
     "id": "7",
     "title": "Transcripts",
-    "phoneNumber": "3047826023",
-    "constant": true
+    "phoneNumber": "3047826023"
   },
   {
     "id": "8",
     "title": "Veteran Services",
     "email": "vetsource@blueridgectc.edu",
-    "phoneNumber": "3047132508",
-    "constant": true
+    "phoneNumber": "3047132508"
   },
   {
     "id": "9",
     "firstName": "Anna M.",
     "lastName": "Crawford",
     "title": "Assistant Dean of Financial Aid and Records",
-    "email": "acrawfor@blueridgectc.edu",
-    "constant": true
+    "email": "acrawfor@blueridgectc.edu"
   },
   {
     "id": "10",
     "firstName": "Jennifer",
     "lastName": "Barrett-Smith",
     "title": "Assistant Dean of Student Outreach",
-    "email": "jbarrett@blueridgectc.edu",
-    "constant": true
+    "email": "jbarrett@blueridgectc.edu"
   }
 
 ]

@@ -53,6 +53,7 @@ import com.example.blueridgefinalprojectapp.components.ContactCard
 import com.example.blueridgefinalprojectapp.components.MenuItemCard
 import com.example.blueridgefinalprojectapp.components.Toolbar
 import com.example.blueridgefinalprojectapp.data.CurrentData
+import com.example.blueridgefinalprojectapp.data.loadContactList
 import com.example.blueridgefinalprojectapp.data.loadDemoContactList
 import com.example.blueridgefinalprojectapp.model.Contact
 import com.example.blueridgefinalprojectapp.model.ToolbarButtonOption
@@ -70,10 +71,14 @@ fun contactsPage(
     drawerScope: CoroutineScope? = null,
     modifier: Modifier = Modifier
 ) {
+    // Load data from file
     val context = LocalContext.current
-    //val contactList = getDemoContactList(context)
     loadDemoContactList(context)
-    val contactList = CurrentData.contactList
+    loadContactList(context)
+
+    // Create merged contacts and demo contacts list
+    val contactList = CurrentData.demoContactList?.toMutableList()
+    CurrentData.contactList?.forEach { contactList?.add(it) }
 
     if (contactList == null) {
         Text("Contact List Not Loaded Properly")

@@ -7,13 +7,7 @@ data class Contact (
     var title: String? = null,
     var email: String? = null,
     var phoneNumber: String? = null,
+    var constant: Boolean = false
 ) {
-    constructor(id: String) : this(
-        id,
-        null,
-        null,
-        null,
-        null,
-        null,
-        )
+
 }

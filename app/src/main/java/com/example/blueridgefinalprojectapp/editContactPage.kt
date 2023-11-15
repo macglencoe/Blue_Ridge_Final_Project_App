@@ -4,7 +4,6 @@ import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -17,11 +16,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextFieldColors
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -34,6 +30,7 @@ import androidx.navigation.NavController
 import com.example.blueridgefinalprojectapp.components.Toolbar
 import com.example.blueridgefinalprojectapp.data.CurrentData
 import com.example.blueridgefinalprojectapp.data.loadDemoContactList
+import com.example.blueridgefinalprojectapp.data.saveContacts
 import com.example.blueridgefinalprojectapp.model.Contact
 import com.example.blueridgefinalprojectapp.model.ToolbarButtonOption
 import com.example.compose.AppTheme
@@ -68,11 +65,11 @@ fun editContactPage(
                 navController?.popBackStack()
             })
         // Content
-        if (contactId != null) {
-            Text(contactId)
-        } else {
+        if (contactId == null) {
             return
         }
+
+        val context = LocalContext.current
 
         val contact: Contact = CurrentData.contactList?.firstOrNull { contact ->
             contact.id == contactId
@@ -80,14 +77,6 @@ fun editContactPage(
 
         if (CurrentData.contactList?.any {it == contact} == false) {
             CurrentData.contactList!!.add(contact)
-        }
-
-
-        if (contact == null) {
-            Text(
-                "Contact Not Found"
-            )
-            return
         }
 
         var firstName by remember { mutableStateOf(contact.firstName) }
@@ -110,7 +99,7 @@ fun editContactPage(
             )
             OutlinedTextField(
                 value = lastName ?: "",
-                onValueChange = { firstName = it },
+                onValueChange = { lastName = it },
                 label = { Text(
                     "Last Name",
                     color = MaterialTheme.colorScheme.primary
@@ -148,7 +137,15 @@ fun editContactPage(
                     .fillMaxWidth()
             ) {
                 Button(
-                    onClick = { /*TODO*/ },
+                    onClick = { // Commit changes to current data and save to file
+                        contact.firstName = if (firstName=="") null else firstName
+                        contact.lastName = if (lastName=="") null else lastName
+                        contact.title = if (title=="") null else title
+                        contact.email = if(email=="") null else email
+                        contact.phoneNumber = if(phoneNumber=="") null else phoneNumber
+                        saveContacts(context)
+                        navController?.popBackStack()
+                        },
                     colors = ButtonDefaults.buttonColors(
                         MaterialTheme.colorScheme.primaryContainer,
                         MaterialTheme.colorScheme.onPrimaryContainer
@@ -161,7 +158,11 @@ fun editContactPage(
                         )
                 }
                 Button(
-                    onClick = { /*TODO*/ },
+                    onClick = { // Delete contact from current data and save file
+                        CurrentData.contactList?.removeIf {it.id == contactId}
+                        saveContacts(context)
+                        navController?.popBackStack()
+                    },
                     colors = ButtonDefaults.buttonColors(
                         MaterialTheme.colorScheme.tertiaryContainer,
                         MaterialTheme.colorScheme.onTertiaryContainer

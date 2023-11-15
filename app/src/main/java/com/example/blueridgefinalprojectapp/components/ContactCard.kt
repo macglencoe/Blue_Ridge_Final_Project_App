@@ -85,17 +85,19 @@ fun ContactCard(
                     )
                 )
             }
-            Box(
-                Modifier.weight(0.25f)
-            ) {
-                IconButton(
-                    onClick = { navController?.navigate("editContact/" + contact.id) },
+            if (!contact.constant) {
+                Box(
+                    Modifier.weight(0.25f)
                 ) {
-                    Icon(
-                        Icons.Outlined.Build,
-                        "Edit Contact",
-                        tint = MaterialTheme.colorScheme.secondary.copy(alpha=0.2f)
-                    )
+                    IconButton(
+                        onClick = { navController?.navigate("editContact/" + contact.id) },
+                    ) {
+                        Icon(
+                            Icons.Outlined.Build,
+                            "Edit Contact",
+                            tint = MaterialTheme.colorScheme.secondary.copy(alpha = 0.2f)
+                        )
+                    }
                 }
             }
         }
