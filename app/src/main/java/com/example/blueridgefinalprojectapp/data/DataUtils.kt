@@ -5,10 +5,16 @@ import com.example.blueridgefinalprojectapp.model.Contact
 import com.example.blueridgefinalprojectapp.model.MenuItem
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import java.io.BufferedWriter
+import java.io.File
+import java.io.FileNotFoundException
+import java.io.FileWriter
 import java.io.IOException
+import java.io.Writer
 import java.lang.reflect.Type
 
-fun getJsonDataFromAsset(
+// -- Asset Loading -- //
+private fun getJsonDataFromAsset(
     context: Context,
     fileName: String
 ): String? {
@@ -25,6 +31,44 @@ fun getJsonDataFromAsset(
     return jsonString
 }
 
+private fun <T> loadListFromAsset(context: Context,fileName: String,typeToken: Type): MutableList<T> {
+    val jsonFileString = getJsonDataFromAsset(context, fileName)
+    return Gson().fromJson(jsonFileString, typeToken)
+}
+
+
+// -- Internal Data Loading -- //
+private fun <T> loadListFromJsonFile(context: Context, fileName: String, typeToken: Type): MutableList<T>? {
+    val file = File(context.filesDir, fileName)
+    try {
+        file.readText()
+    } catch (e: FileNotFoundException) {
+        return null
+    }
+    val jsonFileString = file.readText()
+    return Gson().fromJson(jsonFileString, typeToken)
+}
+
+
+// -- Internal Data Saving -- //
+private inline fun <reified T> saveListToJsonFile(context: Context, fileName: String, list: MutableList<T>) {
+    val jsonFileString = Gson().toJson(list.toTypedArray())
+    var output: Writer?
+    val file = File(context.filesDir, fileName)
+    if (!file.exists()) {
+        file.createNewFile()
+    }
+    output = BufferedWriter(FileWriter(file))
+    output.write(jsonFileString)
+    output.close()
+}
+
+
+// -- Exposed Functions -- //
+fun loadDemoContactList(context: Context) {
+    val type = object : TypeToken<List<Contact>>() {}.type
+    CurrentData.demoContactList = loadListFromAsset(context, "demo_contacts.json", type)
+}
 fun getDemoBruinMenuItemList(context: Context): MutableList<MenuItem>{
     val jsonFileString = getJsonDataFromAsset(
         context = context, fileName = "demo_bruin_menu.json"
@@ -32,16 +76,23 @@ fun getDemoBruinMenuItemList(context: Context): MutableList<MenuItem>{
     val type = object : TypeToken<List<MenuItem>>(){}.type
     return Gson().fromJson(jsonFileString, type)
 }
-
-fun getDemoContactList(context: Context): MutableList<Contact> {
+fun loadContactList(context: Context) {
     val type = object : TypeToken<List<Contact>>() {}.type
-    return getListFromJsonFile(context, "demo_contacts.json", type)
-
+    CurrentData.contactList = loadListFromJsonFile(context, "contacts.json", type)
+        ?: mutableListOf()
+}
+fun saveContacts(context: Context) {
+    if (CurrentData.contactList != null)
+        saveListToJsonFile(
+            context = context,
+            fileName = "contacts.json",
+            list = CurrentData.contactList!!
+        )
 }
 
-fun <T> getListFromJsonFile(context: Context, fileName: String, typeToken: Type): MutableList<T> {
-    val jsonFileString = getJsonDataFromAsset(
-        context = context, fileName = fileName
-    )
-    return Gson().fromJson(jsonFileString, typeToken)
+
+// -- Global Data -- //
+object CurrentData {
+    var contactList: MutableList<Contact>? = null
+    var demoContactList: MutableList<Contact>? = null
 }

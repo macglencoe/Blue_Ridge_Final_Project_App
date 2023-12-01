@@ -20,7 +20,7 @@ import com.example.blueridgefinalprojectapp.NavigationPage
 import com.example.blueridgefinalprojectapp.R
 //import com.example.blueridgefinalprojectapp.data.Datasource_Menuitem
 import com.example.blueridgefinalprojectapp.model.MenuItem
-import com.example.blueridgefinalprojectapp.ui.theme.BlueRidgeFinalProjectAppTheme
+import com.example.compose.AppTheme
 import java.time.LocalDate
 import java.time.ZoneId
 import java.util.Date
@@ -102,7 +102,7 @@ fun MenuItemCardPreview() {
                 .toInstant()
         )
     )
-    BlueRidgeFinalProjectAppTheme {
+    AppTheme {
         Surface(
             color = MaterialTheme.colorScheme.background
         ) {

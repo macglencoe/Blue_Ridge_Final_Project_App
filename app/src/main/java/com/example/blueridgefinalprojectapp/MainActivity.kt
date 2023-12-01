@@ -37,7 +37,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
-import com.example.blueridgefinalprojectapp.ui.theme.BlueRidgeFinalProjectAppTheme
 import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.rememberDrawerState
@@ -46,13 +45,14 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.compose.AppTheme
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            BlueRidgeFinalProjectAppTheme {
+            AppTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
@@ -141,6 +141,15 @@ fun NavigationPage(modifier: Modifier = Modifier) {
                 drawerState = drawerState,
                 drawerScope = scope
             ) }
+            composable("editContact/{contactId}") {navBackStackEntry ->
+                editContactPage(
+                    contactId = navBackStackEntry.arguments?.getString("contactId"),
+                    navController = navController,
+                    drawerState = drawerState,
+                    drawerScope = scope
+
+                )
+            }
 
         }
     }

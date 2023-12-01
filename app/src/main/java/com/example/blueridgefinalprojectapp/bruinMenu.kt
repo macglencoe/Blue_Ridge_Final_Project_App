@@ -24,7 +24,7 @@ import com.example.blueridgefinalprojectapp.components.MenuItemCard
 import com.example.blueridgefinalprojectapp.components.Toolbar
 import com.example.blueridgefinalprojectapp.data.getDemoBruinMenuItemList
 import com.example.blueridgefinalprojectapp.model.ToolbarButtonOption
-import com.example.blueridgefinalprojectapp.ui.theme.BlueRidgeFinalProjectAppTheme
+import com.example.compose.AppTheme
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -88,7 +88,7 @@ fun bruinMenu(
 )
 @Composable
 private fun BruinMenuPreview() {
-    BlueRidgeFinalProjectAppTheme {
+    AppTheme {
         // A surface container using the 'background' color from the theme
         Surface(
             modifier = Modifier.fillMaxSize(),
