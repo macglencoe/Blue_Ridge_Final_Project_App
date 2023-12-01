@@ -1,6 +1,7 @@
 package com.example.blueridgefinalprojectapp
 
 import android.os.Bundle
+import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.StringRes
@@ -78,7 +79,7 @@ val items = listOf(
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterialApi::class)
 @Composable
-private fun NavigationPage(modifier: Modifier = Modifier) {
+fun NavigationPage(modifier: Modifier = Modifier) {
     val navController = rememberNavController()
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()

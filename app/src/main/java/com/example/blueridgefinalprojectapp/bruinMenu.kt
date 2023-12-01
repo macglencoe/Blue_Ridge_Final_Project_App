@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.paddingFrom
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.DrawerState
@@ -56,7 +57,7 @@ fun bruinMenu(
             option2 = ToolbarButtonOption.NONE,
             option2OnClick = { /* Do Nothing */ })
         Column(
-            verticalArrangement = Arrangement.spacedBy(10.dp, Alignment.Top),
+            verticalArrangement = Arrangement.spacedBy(20.dp, Alignment.Bottom),
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .fillMaxSize()
