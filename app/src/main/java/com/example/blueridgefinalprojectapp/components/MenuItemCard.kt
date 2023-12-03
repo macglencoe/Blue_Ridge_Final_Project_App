@@ -8,6 +8,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -16,10 +19,21 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.blueridgefinalprojectapp.NavigationPage
 import com.example.blueridgefinalprojectapp.R
 //import com.example.blueridgefinalprojectapp.data.Datasource_Menuitem
@@ -28,11 +42,100 @@ import com.example.compose.AppTheme
 import java.time.LocalDate
 import java.time.ZoneId
 import java.util.Date
+//import com.example.blueridgefinalprojectapp.ui.theme.CustomColorTheme
+//import com.example.blueridgefinalprojectapp.ui.theme.md_theme_light_tertiary
+import com.example.compose.md_theme_light_primary
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Box
+import androidx.compose.material3.Divider
 
 @Composable
 fun MenuItemCard(
-    menuItem: MenuItem
+    menuItem: MenuItem,
+    //color: Color,
+    //navController: NavController? = null,
+    modifier: Modifier = Modifier
 ) {
+    val context = LocalContext.current
+    var componentHeight by remember { mutableStateOf(0f) }
+    val density = LocalDensity.current
+
+    Column(
+        modifier = modifier
+        .onGloballyPositioned {
+        componentHeight = with(density) {
+            it.size.height.toFloat()
+        }
+    }
+    ) {
+
+        Row(
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Box(
+                Modifier.weight(0.75f)
+            ) {
+                Text(
+                    menuItem.title,
+                    modifier = Modifier.padding(1.dp, 1.dp, 1.dp, 20.dp),
+                    style = MaterialTheme.typography.titleLarge,
+                    color = MaterialTheme.colorScheme.onSurface,
+                    )
+
+            }
+            /*if (menuItem.description != null) {
+                Box(
+                    Modifier.weight(0.25f)
+                ) {
+                    Text(
+                        menuItem.description,
+                        modifier = Modifier.padding(1.dp),
+                        color = md_theme_light_primary
+                    )
+                    Image(
+                        painter = painterResource(R.drawable.chicken_caesar_wrap),
+                        contentDescription = null,
+                        //modifier = Modifier
+                        //.size(150.dp),
+                        modifier = Modifier.padding(1.dp),
+
+                        )
+
+                }
+
+            }*/
+
+
+        }
+        Divider(
+            color = MaterialTheme.colorScheme.primary.copy(alpha=0.2f),
+            thickness = 2.dp,
+            modifier = Modifier
+                .padding(5.dp,5.dp)
+        )
+        Column(
+            Modifier.padding(
+                15.dp, 0.dp, 15.dp, 15.dp
+            )
+        ) {
+            if (menuItem.description != null) {
+                Text(
+                    menuItem.description,
+                    modifier = Modifier.padding(1.dp, 1.dp, 180.dp, 1.dp),
+                    color = md_theme_light_primary
+                )
+                Image(
+                    painter = painterResource(R.drawable.chicken_caesar_wrap),
+                    contentDescription = null,
+                    //modifier = Modifier
+                    //.size(150.dp),
+                    modifier = Modifier.padding(180.dp, 1.dp, 1.dp, 1.dp),
+
+                    )
+            }
+
+        }
+    }
 
     //TODO
 
@@ -43,10 +146,11 @@ fun MenuItemCard(
     // The description and date are optional, so make an if statement before displaying to check if they are null
     // For example:
 
-    if (menuItem.description != null) {
+    /*if (menuItem.description != null) {
         Text(
             menuItem.description,
             modifier = Modifier.padding(1.dp, 1.dp, 180.dp, 1.dp),
+            color = md_theme_light_primary
             )
         Image(
             painter = painterResource(R.drawable.chicken_caesar_wrap),
@@ -54,8 +158,9 @@ fun MenuItemCard(
             //modifier = Modifier
                 //.size(150.dp),
             modifier = Modifier.padding(240.dp, 1.dp, 1.dp, 1.dp),
+
         )
-    }
+    }*/
 
     // You might want to wrap everything inside a `Row()` object so they are grouped together in the catalogue
     // You should also give the Row object a requiredHeight and a fillMaxWidth modifier
@@ -74,13 +179,13 @@ fun MenuItemCard(
     // You can get different font styles and colors from MaterialTheme.typography and MaterialTheme.colorScheme
     // Like so:
 
-    Text(
+    /*Text(
         menuItem.title,
         modifier = Modifier.padding(1.dp, 1.dp, 1.dp, 20.dp),
         style = MaterialTheme.typography.titleLarge,
         color = MaterialTheme.colorScheme.onSurface,
 
-    )
+    )*/
 
     // Email me if you have any questions lmcdon06@my.blueridgectc.edu
 
