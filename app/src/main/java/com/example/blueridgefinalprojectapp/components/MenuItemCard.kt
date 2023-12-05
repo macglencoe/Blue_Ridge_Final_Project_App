@@ -47,6 +47,7 @@ import java.util.Date
 import com.example.compose.md_theme_light_primary
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.material3.Divider
 
 @Composable
@@ -83,29 +84,6 @@ fun MenuItemCard(
                     )
 
             }
-            /*if (menuItem.description != null) {
-                Box(
-                    Modifier.weight(0.25f)
-                ) {
-                    Text(
-                        menuItem.description,
-                        modifier = Modifier.padding(1.dp),
-                        color = md_theme_light_primary
-                    )
-                    Image(
-                        painter = painterResource(R.drawable.chicken_caesar_wrap),
-                        contentDescription = null,
-                        //modifier = Modifier
-                        //.size(150.dp),
-                        modifier = Modifier.padding(1.dp),
-
-                        )
-
-                }
-
-            }*/
-
-
         }
         Divider(
             color = MaterialTheme.colorScheme.primary.copy(alpha=0.2f),
@@ -113,7 +91,7 @@ fun MenuItemCard(
             modifier = Modifier
                 .padding(5.dp,5.dp)
         )
-        Column(
+        Row(
             Modifier.padding(
                 15.dp, 0.dp, 15.dp, 15.dp
             )
@@ -121,17 +99,27 @@ fun MenuItemCard(
             if (menuItem.description != null) {
                 Text(
                     menuItem.description,
-                    modifier = Modifier.padding(1.dp, 1.dp, 180.dp, 1.dp),
+                    modifier = Modifier
+                        .weight(0.75f)
+                    ,
                     color = md_theme_light_primary
                 )
+            }
+            if (menuItem.img != null) {
                 Image(
-                    painter = painterResource(R.drawable.chicken_caesar_wrap),
+                    painter = painterResource(
+                        context.resources.getIdentifier(
+                            menuItem.img,
+                            "drawable",
+                            context.packageName
+                        )
+                    ),
                     contentDescription = null,
-                    //modifier = Modifier
-                    //.size(150.dp),
-                    modifier = Modifier.padding(180.dp, 1.dp, 1.dp, 1.dp),
+                    modifier = Modifier
+                        .weight(0.25f)
 
                     )
+
             }
 
         }

@@ -10,6 +10,6 @@ data class MenuItem(
     val title: String,
     val description: String? = null,
     val date: Date? = null,
-    val imgSrc: String? = null
+    val img: String? = null
 )
 
