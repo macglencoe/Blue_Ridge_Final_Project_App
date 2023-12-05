@@ -1,6 +1,7 @@
 package com.example.blueridgefinalprojectapp.data
 
 import android.content.Context
+import com.example.blueridgefinalprojectapp.model.CatalogItem
 import com.example.blueridgefinalprojectapp.model.Contact
 import com.example.blueridgefinalprojectapp.model.MenuItem
 import com.google.gson.Gson
@@ -74,6 +75,13 @@ fun getDemoBruinMenuItemList(context: Context): MutableList<MenuItem>{
         context = context, fileName = "demo_bruin_menu.json"
     )
     val type = object : TypeToken<List<MenuItem>>(){}.type
+    return Gson().fromJson(jsonFileString, type)
+}
+fun getDemoBookstoreCatalogItemList(context: Context): MutableList<CatalogItem> {
+    val jsonFileString = getJsonDataFromAsset(
+        context = context, fileName = "demo_bookstore_catalog.json"
+    )
+    val type = object : TypeToken<List<CatalogItem>>(){}.type
     return Gson().fromJson(jsonFileString, type)
 }
 fun loadContactList(context: Context) {

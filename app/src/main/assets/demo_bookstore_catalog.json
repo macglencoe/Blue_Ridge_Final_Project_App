@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "title": "Blue Ridge CTC Hoodie",
+    "price": 35.99,
+    "description": "Comfortable hoodie featuring the Blue Ridge CTC logo."
+  },
+  {
+    "id": 2,
+    "title": "School Logo T-Shirt",
+    "price": 19.99,
+    "description": "Classic t-shirt with the school logo for everyday wear."
+  },
+  {
+    "id": 3,
+    "title": "Embroidered Baseball Cap",
+    "price": 14.99,
+    "description": "Stylish cap with embroidered school emblem for a sporty look."
+  },
+  {
+    "id": 4,
+    "title": "Blue Ridge CTC Mug",
+    "price": 8.99,
+    "description": "Durable mug featuring the Blue Ridge CTC branding."
+  },
+  {
+    "id": 5,
+    "title": "Notebook with School Logo",
+    "price": 5.99,
+    "description": "Notebook adorned with the school logo for your writing needs."
+  },
+  {
+    "id": 6,
+    "title": "School Spirit Pennant",
+    "price": 12.99,
+    "description": "Pennant to showcase your school spirit in any space."
+  },
+  {
+    "id": 7,
+    "title": "USB Flash Drive (16GB)",
+    "price": 16.99,
+    "description": "Handy USB drive with 16GB storage capacity for your files."
+  },
+  {
+    "id": 8,
+    "title": "Blue Ridge CTC Water Bottle",
+    "price": 9.99,
+    "description": "Reusable water bottle featuring the Blue Ridge CTC design."
+  },
+  {
+    "id": 9,
+    "title": "School Logo Keychain",
+    "price": 4.99,
+    "description": "Keychain adorned with the school logo for a touch of style."
+  },
+  {
+    "id": 10,
+    "title": "Fleece Blanket with School Colors",
+    "price": 24.99,
+    "description": "Warm fleece blanket in school colors for cozy moments."
+  },
+  {
+    "id": 11,
+    "title": "Blue Ridge CTC Backpack",
+    "price": 29.99,
+    "description": "Durable backpack featuring the Blue Ridge CTC emblem."
+  },
+  {
+    "id": 12,
+    "title": "Pencil Set (Pack of 6)",
+    "price": 3.99,
+    "description": "Set of 6 high-quality pencils for your writing needs."
+  },
+  {
+    "id": 13,
+    "title": "School Logo Mousepad",
+    "price": 7.99,
+    "description": "Mousepad adorned with the school logo for your desk."
+  },
+  {
+    "id": 14,
+    "title": "Lanyard with ID Holder",
+    "price": 6.99,
+    "description": "Lanyard with built-in ID holder for convenient use."
+  },
+  {
+    "id": 15,
+    "title": "Blue Ridge CTC Poster",
+    "price": 11.99,
+    "description": "Poster featuring the Blue Ridge CTC campus for your space."
+  },
+  {
+    "id": 16,
+    "title": "Stainless Steel Travel Mug",
+    "price": 15.99,
+    "description": "Stainless steel travel mug for on-the-go beverages."
+  },
+  {
+    "id": 17,
+    "title": "School Logo Phone Stand",
+    "price": 8.99,
+    "description": "Phone stand adorned with the school logo for your desk."
+  },
+  {
+    "id": 18,
+    "title": "Hooded Sweatshirt with Zipper",
+    "price": 39.99,
+    "description": "Zippered hooded sweatshirt for added warmth and style."
+  },
+  {
+    "id": 19,
+    "title": "School Logo Sticker Pack",
+    "price": 2.99,
+    "description": "Pack of stickers featuring the school logo for customization."
+  },
+  {
+    "id": 20,
+    "title": "Embroidered Patch Set",
+    "price": 5.99,
+    "description": "Set of embroidered patches to personalize your belongings."
+  }
+]

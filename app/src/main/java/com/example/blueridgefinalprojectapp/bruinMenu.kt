@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFrom
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.DrawerState
@@ -62,18 +64,18 @@ fun bruinMenu(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(all = 10.dp)
-                .verticalScroll(rememberScrollState())
         ) {
             // Content
-            menuItemList.forEach { menuItem ->
-                MenuItemCard(
-                    menuItem = menuItem
-                )
+            LazyColumn {
+                items(menuItemList) { menuItem ->
+                    MenuItemCard(menuItem = menuItem)
+                }
             }
         }
     }
-
 }
+
+
 
 // -- PREVIEW -- //
 

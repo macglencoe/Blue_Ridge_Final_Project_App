@@ -53,76 +53,62 @@ import androidx.compose.material3.Divider
 @Composable
 fun MenuItemCard(
     menuItem: MenuItem,
-    //color: Color,
-    //navController: NavController? = null,
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
-    var componentHeight by remember { mutableStateOf(0f) }
-    val density = LocalDensity.current
 
-    Column(
-        modifier = modifier
-        .onGloballyPositioned {
-        componentHeight = with(density) {
-            it.size.height.toFloat()
+    Row(
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        Box(
+            Modifier.weight(0.75f)
+        ) {
+            Text(
+                menuItem.title,
+                modifier = Modifier.padding(1.dp, 1.dp, 1.dp, 20.dp),
+                style = MaterialTheme.typography.titleLarge,
+                color = MaterialTheme.colorScheme.onSurface,
+                )
+
         }
     }
-    ) {
-
-        Row(
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Box(
-                Modifier.weight(0.75f)
-            ) {
-                Text(
-                    menuItem.title,
-                    modifier = Modifier.padding(1.dp, 1.dp, 1.dp, 20.dp),
-                    style = MaterialTheme.typography.titleLarge,
-                    color = MaterialTheme.colorScheme.onSurface,
-                    )
-
-            }
-        }
-        Divider(
-            color = MaterialTheme.colorScheme.primary.copy(alpha=0.2f),
-            thickness = 2.dp,
-            modifier = Modifier
-                .padding(5.dp,5.dp)
+    Divider(
+        color = MaterialTheme.colorScheme.primary.copy(alpha=0.2f),
+        thickness = 2.dp,
+        modifier = Modifier
+            .padding(5.dp,5.dp)
+    )
+    Row(
+        Modifier.padding(
+            15.dp, 0.dp, 15.dp, 15.dp
         )
-        Row(
-            Modifier.padding(
-                15.dp, 0.dp, 15.dp, 15.dp
+    ) {
+        if (menuItem.description != null) {
+            Text(
+                menuItem.description,
+                modifier = Modifier
+                    .weight(0.75f)
+                ,
+                color = md_theme_light_primary
             )
-        ) {
-            if (menuItem.description != null) {
-                Text(
-                    menuItem.description,
-                    modifier = Modifier
-                        .weight(0.75f)
-                    ,
-                    color = md_theme_light_primary
-                )
-            }
-            if (menuItem.img != null) {
-                Image(
-                    painter = painterResource(
-                        context.resources.getIdentifier(
-                            menuItem.img,
-                            "drawable",
-                            context.packageName
-                        )
-                    ),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .weight(0.25f)
-
+        }
+        if (menuItem.img != null) {
+            Image(
+                painter = painterResource(
+                    context.resources.getIdentifier(
+                        menuItem.img,
+                        "drawable",
+                        context.packageName
                     )
+                ),
+                contentDescription = null,
+                modifier = Modifier
+                    .weight(0.25f)
 
-            }
+                )
 
         }
+
     }
 
     //TODO
