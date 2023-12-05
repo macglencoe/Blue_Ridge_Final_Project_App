@@ -22,6 +22,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.blueridgefinalprojectapp.components.AIDisclaimer
 import com.example.blueridgefinalprojectapp.components.MenuItemCard
 import com.example.blueridgefinalprojectapp.components.Toolbar
 import com.example.blueridgefinalprojectapp.data.getDemoBruinMenuItemList
@@ -66,6 +67,7 @@ fun bruinMenu(
                 .padding(all = 10.dp)
         ) {
             // Content
+            AIDisclaimer()
             LazyColumn {
                 items(menuItemList) { menuItem ->
                     MenuItemCard(menuItem = menuItem)
